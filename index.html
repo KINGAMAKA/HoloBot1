@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#080909">
+  <meta name="description" content="AMAKA AI — an offline-first holographic voice assistant.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+  <title>AMAKA AI</title>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand-mark">A</div>
+      <div class="brand-copy"><strong>AMAKA AI</strong><span>LOCAL INTELLIGENCE</span></div>
+      <button class="icon-btn" id="settingsBtn" aria-label="Settings">⚙</button>
+    </header>
+
+    <main>
+      <section class="stage" aria-label="AMAKA AI avatar">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="halo"></div>
+        <div class="face-wrap" id="faceWrap">
+          <div class="face">
+            <div class="crown-line"></div>
+            <div class="forehead-mark">✦</div>
+            <div class="brow brow-left"></div><div class="brow brow-right"></div>
+            <div class="eye eye-left"><i></i></div><div class="eye eye-right"><i></i></div>
+            <div class="nose"></div>
+            <div class="cheek cheek-left"></div><div class="cheek cheek-right"></div>
+            <div class="mouth" id="mouth"><i></i></div>
+            <div class="jaw"></div>
+          </div>
+          <div class="neck-glow"></div>
+        </div>
+        <div class="scanline"></div>
+        <div class="stage-caption"><span class="live-dot"></span><span id="stateLabel">STANDBY · READY TO CONNECT</span></div>
+      </section>
+
+      <section class="conversation">
+        <div class="message-list" id="messages">
+          <article class="message assistant">
+            <span class="speaker">AMAKA</span>
+            <p>Hello. I am AMAKA AI. My interface is awake. Connect a local model in Settings, and we can begin talking.</p>
+          </article>
+        </div>
+        <div class="composer">
+          <button class="round-btn mic-btn" id="micBtn" title="Speak" aria-label="Speak">🎙</button>
+          <input id="promptInput" type="text" placeholder="Talk to Amaka..." autocomplete="off">
+          <button class="send-btn" id="sendBtn" aria-label="Send">➤</button>
+        </div>
+        <div class="bottom-note"><span id="connectionLabel">DEMO MODE</span><span>YOUR DEVICE · YOUR AI</span></div>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="settingsDialog">
+    <form method="dialog" class="settings">
+      <div class="dialog-head"><div><span class="eyebrow">CONFIGURATION</span><h2>Connect the brain</h2></div><button class="icon-btn" value="cancel" aria-label="Close">✕</button></div>
+      <p class="help">Enter the local server address shown by your AI app. The server must expose an OpenAI-compatible chat completions API.</p>
+      <label>Local API URL
+        <input id="apiUrl" type="url" placeholder="http://127.0.0.1:8080/v1/chat/completions">
+      </label>
+      <label>Model name
+        <input id="modelName" type="text" placeholder="local-model">
+      </label>
+      <label>API key (optional)
+        <input id="apiKey" type="password" placeholder="Leave blank if not required">
+      </label>
+      <label>System personality
+        <textarea id="systemPrompt" rows="3">You are AMAKA AI, a helpful, warm, confident African-inspired personal assistant. Be clear, practical and conversational. Do not pretend to have access to information or device functions you do not have.</textarea>
+      </label>
+      <div class="settings-actions">
+        <button type="button" class="secondary-btn" id="testBtn">Test connection</button>
+        <button value="save" class="primary-btn" id="saveBtn">Save settings</button>
+      </div>
+      <p id="settingsStatus" class="status-text">No local model connected yet.</p>
+      <p class="tiny">Tip: a GitHub Pages website is HTTPS. Most browsers block calls from HTTPS pages to an HTTP localhost server. For reliable same-phone access, package this interface in an Android WebView or use a local HTTPS bridge. See README.</p>
+    </form>
+  </dialog>
+  <script src="app.js"></script>
+</body>
+</html>

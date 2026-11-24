@@ -1,0 +1,10 @@
+{
+  "name": "AMAKA AI",
+  "short_name": "AMAKA",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#070909",
+  "theme_color": "#080909",
+  "description": "Offline-first holographic AI assistant",
+  "icons": []
+}
